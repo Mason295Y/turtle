@@ -49,7 +49,7 @@ public class SimpleTurtle
   private int yPos = 0;
   
   /** heading angle */
-  private double heading = 0;  // default is facing north
+  private double heading = 0;  // default is facing north, 90 east, 180 south, 270 west
   
   /** pen to use for this turtle */
   private Pen pen = new Pen();
@@ -686,6 +686,58 @@ public class SimpleTurtle
     g.drawString(this.toString(),xPos + (int) (width/2),yPos);
   }
   
+
+  public void polygon(double sides, int size){
+    for(int i = 0; i<sides; i++){
+      this.forward(size/10);
+      this.turn(360.0/sides);
+
+
+    }
+  }
+
+public void star(int size) {
+    for (int i = 0; i < 5; i++) {
+        this.forward(size);
+        this.turn(36);
+        this.forward(size);
+        this.turn(144);
+    }
+}
+
+public void diamond(int sideLength) {
+    this.turn(45); 
+    for (int i = 0; i < 4; i++) {
+        this.forward(sideLength);
+        this.turnRight(); 
+    }
+    this.turn(-45); 
+  }
+
+public void arrow(int length) {
+    this.forward(length);
+
+    this.turn(135);
+    this.forward(length / 3);
+    this.forward(-length / 3);
+
+    this.turn(-270);
+    this.forward(length / 3);
+    this.forward(-length / 3);
+
+    this.turn(135);
+}
+
+public void cross(int armSize) {
+    for (int i = 0; i < 4; i++) {
+        this.forward(armSize);
+        this.turnLeft();
+        this.forward(armSize);
+        this.turnRight();
+        this.forward(armSize);
+        this.turnRight();
+    }
+  }
   /**
    * Method to return a string with informaiton 
    * about this turtle
